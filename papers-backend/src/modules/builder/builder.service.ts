@@ -22,8 +22,15 @@ export class BuilderService implements OnModuleInit {
 
     async storePaper(event: BuildEvent) {
         await this.buildEventModel.findOneAndUpdate(
-            event,
-            { new: true }).exec();
+            { blockId: event.blockId},
+            { 
+                eventType: event.eventType,
+                blockId: event.blockId,
+                name: event.name,
+                date: event.date,
+                user: event.user,
+            },
+            { upsert: true, new: true }).exec();
     }
 
     async reset() {
