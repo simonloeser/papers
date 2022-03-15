@@ -62,18 +62,18 @@ export class BuilderService implements OnModuleInit {
 
     async reset() {
         await this.clear();
-        await this.storePaper({
+        /*await this.storePaper({
             eventType: 'paperStored',
             blockId: '000001',
             name: 'Coole Studie',
             date: '15.07.2021',
             user: 'Hendrik',
-        });
+        });*/
     }
 
     async clear() {
-        await this.paperModel.deleteMany();
+        /*await this.paperModel.deleteMany();
         await this.buildEventModel.deleteMany();
-        await this.userModel.deleteMany();
+        await this.userModel.deleteMany();*/
     }
 }

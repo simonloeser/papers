@@ -5,6 +5,7 @@ import { ToastService } from 'ng-bootstrap-ext';
 import { ActivatedRoute, Router } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
 import { BuildEvent } from 'src/app/common/BuildEvent';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-add-paper',
@@ -50,7 +51,7 @@ export class AddPaperComponent implements OnInit {
       user: this.formGroup.get('user')?.value,
     }
 
-    this.http.post<BuildEvent>('http://localhost:3000/event/', newPaper).subscribe(
+    this.http.post<BuildEvent>(environment.baseurl + 'event/', newPaper).subscribe(
       () => {
         this.toastService.success('Store Paper', 'Paper has been stored');
         this.router.navigate(['home', this.formGroup.get('user')?.value]);

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastService } from 'ng-bootstrap-ext';
 import { ActivatedRoute } from '@angular/router';
-import { Paper } from 'src/app/Paper';
 import { BuildEvent } from 'src/app/common/BuildEvent';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
       }
     })
 
-    this.http.get<BuildEvent[]>('http://localhost:3000/query/events').subscribe(
+    this.http.get<BuildEvent[]>(environment.baseurl + 'query/events').subscribe(
       answer => this.handleQueryResponse(answer),
     );
   }
