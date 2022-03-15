@@ -30,7 +30,22 @@ export class BuilderService implements OnModuleInit {
                 date: event.date,
                 user: event.user,
             },
-            { upsert: true, new: true }).exec();
+            { upsert: true, new: true }
+        ).exec();
+
+        this.userModel.findOneAndUpdate(
+            { name: event.user },
+            { name: event.user },
+            { upsert: true, new: true }
+        ).exec();
+
+        this.paperModel.findOneAndUpdate(
+            { name: event.name },
+            { name: event.name },
+            { upsert: true, new: true }
+        ).exec();
+
+        return 200;
     }
 
     async reset() {

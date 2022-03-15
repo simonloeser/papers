@@ -4,6 +4,7 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators }
 import { ToastService } from 'ng-bootstrap-ext';
 import { ActivatedRoute, Router } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
+import { BuildEvent } from 'src/app/common/BuildEvent';
 
 @Component({
   selector: 'app-add-paper',
@@ -42,21 +43,14 @@ export class AddPaperComponent implements OnInit {
 
   addPaper() {
     const newPaper = {
-      id: this.formGroup.get('id')?.value,
+      eventType: 'paperStored',
+      blockId: this.formGroup.get('id')?.value,
       name: this.formGroup.get('paper')?.value,
       date: this.formGroup.get('reading')?.value,
       user: this.formGroup.get('user')?.value,
     }
 
-    const newCmd = {
-      opCode: 'storePaper',
-      parameters: newPaper,
-    }
-
-    this.toastService.success('Store Paper', 'Paper has been stored');
-    this.router.navigate(['home', this.formGroup.get('user')?.value]);
-
-    /*this.http.post<any>('http://localhost:3000/cmd/', newCmd).subscribe(
+    this.http.post<BuildEvent>('http://localhost:3000/event/', newPaper).subscribe(
       () => {
         this.toastService.success('Store Paper', 'Paper has been stored');
         this.router.navigate(['home', this.formGroup.get('user')?.value]);
@@ -64,6 +58,6 @@ export class AddPaperComponent implements OnInit {
       (error) => {
         this.toastService.error('Store paper', `problem: ${JSON.stringify(error, null, 3)}`);
       }
-    )*/
+    )
   }
 }
