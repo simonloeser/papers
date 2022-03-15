@@ -1,0 +1,78 @@
+<form [formGroup]="formGroup" (ngSubmit)="addPaper()">
+  <div class="container">
+    <div class="row my-2">
+      <div class="col d-flex justify-content-center">
+        <h4><u>Input</u></h4>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center my-2">
+      <div class="col d-flex justify-content-center">
+        <div class="form-floating mb-3">
+          <input class="form-control input-sm" id="nameInput" type="text" placeholder="Name of paper" formControlName="paper" [(ngModel)]="debugName" style="width: 350px; height: 60px;">
+          <label for="nameInput">Name of paper</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center my-2">
+      <div class="col d-flex justify-content-center">
+        <div class="form-floating mb-3">
+          <input class="form-control input-sm" id="dateInput" type="text" placeholder="Date of reading" formControlName="reading" [(ngModel)]="debugDate" style="width: 350px; height: 60px;">
+          <label for="nameInput">Date of reading</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center my-2">
+      <div class="col d-flex justify-content-center">
+        <div class="form-floating mb-3">
+          <input class="form-control input-sm" id="userInput" type="text" placeholder="User" formControlName="user" [(ngModel)]="debugUser" style="width: 350px; height: 60px;">
+          <label for="nameInput">User</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center my-2">
+      <div class="col d-flex justify-content-center">
+        <button id="submitPaperButton" type="submit" [disabled]="!formGroup.valid"
+          class="btn btn-outline-success">Submit</button>
+      </div>
+    </div>
+
+    <div class="row my-2">
+      <div class="col d-flex justify-content-center">
+        <br>
+      </div>
+    </div>
+
+    <div class="row my-2">
+      <div class="col d-flex justify-content-center">
+        <h5><u>Your input</u></h5>
+      </div>
+    </div>
+
+    <div class="row my-2">
+      <div class="col d-flex justify-content-center">
+        <b>Name:&nbsp;</b> {{debugName}}
+      </div>
+    </div>
+
+    <div class="row my-2">
+      <div class="col d-flex justify-content-center">
+        <b>Date:&nbsp;</b> {{debugDate}}
+      </div>
+    </div>
+
+    <div class="row my-2">
+      <div class="col d-flex justify-content-center">
+        <b>User:&nbsp;</b> {{debugUser}}
+      </div>
+    </div>
+
+    <div class="col d-flex justify-content-center">
+      <p style="color:red">{{formGroup.status}} {{formGroup.errors}}</p>
+    </div>
+  </div>
+</form>
+<router-outlet></router-outlet>
