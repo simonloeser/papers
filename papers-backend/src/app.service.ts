@@ -14,6 +14,18 @@ export class AppService {
     return await this.modelBuilderService.storePaper(event);
   }
 
+  async getQuery(key: string): Promise<any> {
+    if (key === 'events') {
+      return await this.modelBuilderService.getBuildEvents();
+    } else if (key === 'users') {
+      return await this.modelBuilderService.getUsers();
+    } else if (key === 'papers') {
+      return await this.modelBuilderService.getPapers();
+    } else {
+      return { error: 'Papers-backend error: unknown key: ' + key };
+    }
+  }
+
   async getReset() {
     await this.modelBuilderService.reset();
     return 'Papers database was cleared!';

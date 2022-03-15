@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ToastService } from 'ng-bootstrap-ext';
 import { ActivatedRoute } from '@angular/router';
 import { Paper } from 'src/app/Paper';
+import { BuildEvent } from 'src/app/common/BuildEvent';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ import { Paper } from 'src/app/Paper';
 export class HomeComponent implements OnInit {
 
   public user = "";
+  public amount = 0;
   public papers: any[] = [];
 
   constructor(
@@ -27,15 +29,18 @@ export class HomeComponent implements OnInit {
       }
     })
 
-    /*this.http.get<Paper[]>('http://localhost:3100/query/products').subscribe(
+    this.http.get<BuildEvent[]>('http://localhost:3000/query/events').subscribe(
       answer => this.handleQueryResponse(answer),
-    );*/
+    );
   }
 
   handleQueryResponse(answer: any[]) {
     this.papers = [];
     for (const paper of answer) {
       this.papers.push(paper);
+      if (paper.user == this.user) {
+        this.amount += 1;
+      }
     }
   }
 }

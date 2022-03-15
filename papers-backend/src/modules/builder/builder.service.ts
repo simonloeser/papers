@@ -48,6 +48,18 @@ export class BuilderService implements OnModuleInit {
         return 200;
     }
 
+    async getBuildEvents() {
+        return await this.buildEventModel.find({}).exec();
+    }
+
+    async getUsers() {
+        return await this.userModel.find({}).exec();
+    }
+
+    async getPapers() {
+        return await this.paperModel.find({}).exec();
+    }
+
     async reset() {
         await this.clear();
         await this.storePaper({

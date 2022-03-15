@@ -1,5 +1,5 @@
 import { HttpService } from '@nestjs/axios';
-import { Body, Controller, Get, Logger, Post } from '@nestjs/common';
+import { Body, Controller, Get, Logger, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { BuildEvent } from './modules/builder/BuildEvent.schema';
 
@@ -20,6 +20,11 @@ export class AppController {
   @Get('reset')
   async getReset() {
     return await this.appService.getReset();
+  }
+
+  @Get('query/:key')
+  async getQuery(@Param('key') key: string): Promise<any> {
+    return await this.appService.getQuery(key);
   }
 
   @Post('event')
