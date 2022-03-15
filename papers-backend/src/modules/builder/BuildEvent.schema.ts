@@ -7,16 +7,19 @@ export class BuildEvent {
   eventType: string;
 
   @Prop({ required: true })
+  blockId: string;
+
+  @Prop({ required: true })
   name: string;
 
   @Prop({ required: true })
-  time: string;
+  date: string;
 
   @Prop({ required: true })
   user: string;
 
-  @Prop({ required: true, type: MongooseSchema.Types.Mixed })
-  payload: any;
+  /*@Prop({ required: true, type: MongooseSchema.Types.Mixed })
+  payload: any;*/
 }
 
 export const BuildEventSchema = SchemaFactory.createForClass(BuildEvent);

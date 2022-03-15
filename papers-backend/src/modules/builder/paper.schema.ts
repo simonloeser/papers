@@ -6,4 +6,4 @@ export class Paper {
   name: string;
 }
 
-export const ProductSchema = SchemaFactory.createForClass(Paper);
+export const PaperSchema = SchemaFactory.createForClass(Paper);
