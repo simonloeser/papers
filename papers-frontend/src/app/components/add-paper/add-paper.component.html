@@ -4,6 +4,20 @@
       <div class="col d-flex justify-content-center">
         <h4><u>Input</u></h4>
       </div>
+
+      <div class="col d-flex justify-content-center">
+        <h5><u>Your input</u></h5>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center my-2">
+      <div class="col d-flex justify-content-center">
+        <div class="form-floating mb-3">
+          <input class="form-control input-sm" id="idInput" type="text" placeholder="ID" formControlName="id" style="width: 350px; height: 60px;">
+          <label for="idInput">ID</label>
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center"></div>
     </div>
 
     <div class="row d-flex justify-content-center my-2">
@@ -12,6 +26,10 @@
           <input class="form-control input-sm" id="nameInput" type="text" placeholder="Name of paper" formControlName="paper" [(ngModel)]="debugName" style="width: 350px; height: 60px;">
           <label for="nameInput">Name of paper</label>
         </div>
+      </div>
+
+      <div class="col d-flex justify-content-center">
+        <b>Name:&nbsp;</b> {{debugName}}
       </div>
     </div>
 
@@ -22,6 +40,10 @@
           <label for="nameInput">Date of reading</label>
         </div>
       </div>
+
+      <div class="col d-flex justify-content-center">
+        <b>Date:&nbsp;</b> {{debugDate}}
+      </div>
     </div>
 
     <div class="row d-flex justify-content-center my-2">
@@ -31,6 +53,10 @@
           <label for="nameInput">User</label>
         </div>
       </div>
+
+      <div class="col d-flex justify-content-center">
+        <b>User:&nbsp;</b> {{debugUser}}
+      </div>
     </div>
 
     <div class="row d-flex justify-content-center my-2">
@@ -38,35 +64,12 @@
         <button id="submitPaperButton" type="submit" [disabled]="!formGroup.valid"
           class="btn btn-outline-success">Submit</button>
       </div>
+      <div class="col d-flex justify-content-center"></div>
     </div>
 
     <div class="row my-2">
       <div class="col d-flex justify-content-center">
         <br>
-      </div>
-    </div>
-
-    <div class="row my-2">
-      <div class="col d-flex justify-content-center">
-        <h5><u>Your input</u></h5>
-      </div>
-    </div>
-
-    <div class="row my-2">
-      <div class="col d-flex justify-content-center">
-        <b>Name:&nbsp;</b> {{debugName}}
-      </div>
-    </div>
-
-    <div class="row my-2">
-      <div class="col d-flex justify-content-center">
-        <b>Date:&nbsp;</b> {{debugDate}}
-      </div>
-    </div>
-
-    <div class="row my-2">
-      <div class="col d-flex justify-content-center">
-        <b>User:&nbsp;</b> {{debugUser}}
       </div>
     </div>
 

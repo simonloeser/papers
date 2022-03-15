@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { ToastService } from 'ng-bootstrap-ext';
 import { ActivatedRoute, Router } from '@angular/router';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-add-paper',
@@ -23,6 +24,7 @@ export class AddPaperComponent implements OnInit {
   debugUser = ''
 
   ngOnInit(): void {
+    this.formGroup.get('id')?.setValue(uuidv4())
     this.toastService.add({
       title: 'Are you Hendrik though?',
       body: 'This application is only designed for Lord Ruben at the moment',
@@ -32,6 +34,7 @@ export class AddPaperComponent implements OnInit {
   }
 
   formGroup = new FormGroup({
+    id: new FormControl('', [Validators.required]),
     paper: new FormControl('', [Validators.required]),
     reading: new FormControl('', [Validators.required]),
     user: new FormControl('', [Validators.required]),
@@ -39,6 +42,7 @@ export class AddPaperComponent implements OnInit {
 
   addPaper() {
     const newPaper = {
+      id: this.formGroup.get('id')?.value,
       name: this.formGroup.get('paper')?.value,
       date: this.formGroup.get('reading')?.value,
       user: this.formGroup.get('user')?.value,
